@@ -1,10 +1,18 @@
+import "./ExpenseItem.css";
+
 function ExpenseItem() {
+  const expenseDate = new Date(2021, 2, 28);
+  const expenseTitle = "Car Insurance";
+  const expenseAmount = 546.25;
+  const locationOfExpenditure = "Delhi";
+
   return (
-    <div>
+    <div className="mainDiv">
       <h2>Expense Item's</h2>
       <div>
-        <div>Food</div> <div>Rs 10</div>
-      </div>{" "}
+        <div>{expenseTitle}</div> <div>Rs {expenseAmount}</div>
+        <div> {locationOfExpenditure}</div>
+      </div>
       <div>
         <div>Petrol</div> <div>Rs 100</div>
       </div>
