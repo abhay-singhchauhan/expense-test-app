@@ -1,20 +1,37 @@
 import ExpenseItem from "./components/ExpenseItem.js";
+import NewExpense from "./components/NewExpense/NewExpense.js";
 
 function App() {
+  const expense = [
+    {
+      Title: "Abhay",
+      Ammount: 54524,
+      Location: "Delhi",
+    },
+    {
+      Title: "Shanu",
+      Ammount: 78,
+      Location: "Mumbai",
+    },
+    {
+      Title: "Salmon Bhaai",
+      Ammount: 69,
+      Location: "Mumbai",
+    },
+  ];
+  const exp = expense.map((data, index) => (
+    <ExpenseItem
+      Title={data.Title}
+      Ammount={data.Ammount}
+      Location={data.Location}
+    />
+  ));
+  console.log(exp);
   return (
     <div>
-      <h2>Let's get started achas beetetdifh apdsfjadsfhaf;hdsakjhs;d!</h2>
-      <ExpenseItem
-        Title="Abhay"
-        Ammount="800000"
-        Location="Delhi"
-      ></ExpenseItem>
-      <ExpenseItem Title="Shahid" Ammount="50" Location="America"></ExpenseItem>
-      <ExpenseItem
-        Title="Numan"
-        Ammount="5000"
-        Location="New York"
-      ></ExpenseItem>
+      <h2>Let's get started</h2>
+      {exp}
+      <NewExpense></NewExpense>
     </div>
   );
 }
