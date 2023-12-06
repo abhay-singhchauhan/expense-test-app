@@ -15,9 +15,19 @@ const NewExpense = () => {
     setLocationState(e.target.value);
   }
 
+  function submitHandler(e) {
+    e.preventDefault();
+    const expenseData = {
+      Title: nameState,
+      Ammount: priceState,
+      Location: locationState,
+    };
+
+    console.log(expenseData);
+  }
   return (
     <div>
-      <form>
+      <form onSubmit={submitHandler}>
         <div>
           <div>
             <input
