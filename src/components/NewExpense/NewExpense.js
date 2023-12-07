@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const NewExpense = () => {
+const NewExpense = (props) => {
   const [nameState, setNameState] = useState("");
   const [priceState, setPriceState] = useState("");
   const [locationState, setLocationState] = useState("");
@@ -23,7 +23,10 @@ const NewExpense = () => {
       Location: locationState,
     };
 
-    console.log(expenseData);
+    props.onDataAdd(expenseData);
+    setLocationState("");
+    setNameState("");
+    setPriceState("");
   }
   return (
     <div>
@@ -33,6 +36,7 @@ const NewExpense = () => {
             <input
               onChange={nameOnChange}
               placeholder="Name"
+              value={nameState}
               type="text"
             ></input>
           </div>
@@ -40,6 +44,7 @@ const NewExpense = () => {
             <input
               onChange={priceOnChange}
               placeholder="Price"
+              value={priceState}
               type="number"
             ></input>
           </div>
@@ -47,6 +52,7 @@ const NewExpense = () => {
             <input
               onChange={locationOnChange}
               placeholder="Location"
+              value={locationState}
               type="location"
             ></input>
           </div>

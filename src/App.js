@@ -27,11 +27,15 @@ function App() {
     />
   ));
   console.log(exp);
+  function dataAdd(data) {
+    expense.push(data);
+    console.log(data, "yaha hai data");
+  }
   return (
     <div>
       <h2>Let's get started</h2>
       {exp}
-      <NewExpense></NewExpense>
+      <NewExpense onDataAdd={dataAdd}></NewExpense>
     </div>
   );
 }
