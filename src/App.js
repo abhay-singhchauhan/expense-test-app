@@ -4,7 +4,7 @@ import Filter from "./components/filter.js";
 import { useState } from "react";
 
 function App() {
-  const main_data = [
+  let main_data = [
     {
       Title: "Abhay",
       Ammount: 54524,
@@ -23,17 +23,19 @@ function App() {
   ];
   const data_expense = main_data;
   const [expense, setExpense] = useState(data_expense);
+  const [visible, setVisible] = useState(true);
+
   function dataAdd(data) {
-    setExpense((preExpense) => {
-      console.log("currentData", data, "previous Expense", preExpense);
-      return [data, ...preExpense];
-    });
+    main_data = [data, ...main_data];
+    setExpense(main_data);
+    setVisible(false);
     console.log(expense, "yaha hai data");
   }
 
   function selectChange(value) {
     console.log("this is teh vlue", value);
     if (value === "") {
+      console.log(main_data);
       setExpense(main_data);
     } else {
       const arr = main_data.filter((ele) => {
@@ -56,12 +58,19 @@ function App() {
     />
   ));
   console.log(exp);
+  function showForm() {
+    setVisible(true);
+  }
   return (
     <div>
       <h2>Let's get started</h2>
       <Filter onSelectChange={selectChange}></Filter>
       {exp}
-      <NewExpense onDataAdd={dataAdd}></NewExpense>
+      {visible ? (
+        <NewExpense onDataAdd={dataAdd}></NewExpense>
+      ) : (
+        <button onClick={showForm}>Add Expense</button>
+      )}
     </div>
   );
 }
